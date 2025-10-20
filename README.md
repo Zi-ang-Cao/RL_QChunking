@@ -21,6 +21,9 @@ Q-chunking runs RL on a *temporally extended action (action chunking) space* wit
 
 ## Installation
 ```bash
+pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu124
+pip install --upgrade nvidia-cudnn-cu12==9.8.0.87
+
 pip install -r requirements.txt
 ```
 
@@ -39,6 +42,10 @@ and include this flag in the command line `--ogbench_dataset_dir=[realpath/to/yo
 We include the example command for all the methods we evaluate in our paper below. For `scene` and `puzzle-3x3` domains, use `--sparse=True`. We also release our plot data at [plot_data/README.md](plot_data/README.md).
 
 ```bash
+
+MUJOCO_GL=egl python main.py --run_group=reproduce --agent.actor_type=best-of-n --agent.actor_num_samples=32 --env_name=square-mh-low_dim --sparse=False --horizon_length=5
+
+
 # QC
 MUJOCO_GL=egl python main.py --run_group=reproduce --agent.actor_type=best-of-n --agent.actor_num_samples=32 --env_name=cube-triple-play-singletask-task2-v0 --sparse=False --horizon_length=5
 
